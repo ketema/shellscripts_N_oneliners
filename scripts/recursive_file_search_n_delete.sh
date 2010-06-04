@@ -9,8 +9,7 @@ if [ -z "${2}" ]; then
 fi
 
 cd ${1}
-SEARCH=${2}
-
+SEARCH=${2} 
 for EACH in $(${1}/$(grep -rH "${SEARCH}" * | cut -f1 -d":")); do
 	sed -i "/${SEARCH}/d" ${EACH};
 done
