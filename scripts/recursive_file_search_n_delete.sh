@@ -10,6 +10,9 @@ fi
 
 cd ${1}
 SEARCH=${2} 
-for EACH in $(${1}/$(grep -rH "${SEARCH}" * | cut -f1 -d":")); do
-	sed -i "/${SEARCH}/d" ${EACH};
+#		$(/some/file/$(grep -rh "${SEARCH}" *  < execute the file we find the pattern in? WRONG... must be an older script
+#		$(ls -1 /some/file/$(grep -rh "blah blah <- full path				
+for EACH in $(echo ${1}/$(grep -rH "${SEARCH}" * | cut -f1 -d":")); do
+	#echo "sed -i \">/${SEARCH}/d<\" ${EACH}"
+	sed -i "/${SEARCH}/d" ${EACH}
 done
