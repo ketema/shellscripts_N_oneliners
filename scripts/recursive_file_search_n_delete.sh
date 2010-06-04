@@ -12,6 +12,5 @@ cd ${1}
 SEARCH=${2}
 
 for EACH in $(${1}/$(grep -rH "${SEARCH}" * | cut -f1 -d":")); do
-	echo "sed -i \"/${SEARCH}/d\" ${EACH}"
-	#sed -i "/${SEARCH}/d" ${EACH};
+	sed -i "/${SEARCH}/d" ${EACH};
 done
