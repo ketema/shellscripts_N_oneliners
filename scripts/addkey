@@ -1,0 +1,7 @@
+#!/bin/sh
+
+#The purpose of this script was to make adding my public key to a server I had
+#ssh access to easier.  You need to have your public key generated
+#and in the location indicate.
+
+cat ~/.ssh/*.pub | ssh $1 "if [ ! -d "~/.ssh" ]; then mkdir ~/.ssh; fi;touch ~/.ssh/authorized_keys;cat - >> ~/.ssh/authorized_keys"

@@ -1,0 +1,17 @@
+#!/bin/bash
+
+#I work with PostgreSQL a lot. I like to be able to migrate my db schemas from test to production
+#keeping my schemas in git helps me to do that.  however i don't like dumping my schema every time
+#I make a change (I never remember!) So I dump it once and stick it in git.  Then this script
+#becomes a cron job that dumps it periadically for me and compares it to the one in git.
+#If there is even one difference it just copies that file over and guess what!? My other
+#Utility cronjob commits it every 15 minutes.  Things that would make this script better:
+#cmd line parameters so its portable and usable by others without editing
+
+
+# grab the dump
+  /PATH/TO/pg_dump -C -s -U USER DATABASE > /tmp/dumpfile.sql
+# assign the difference to a var
+  DIFF=`diff /PATH/TO/SCHEMA/FILE/IN/GIT/schema.sql /tmp/dumpfile.sql | tr -d "\n"`
+if [ ! -z "${DIFF}" ]; then cp /tmp/rsdumpfile.sql /PATH/TO/SCHEMA/FILE/IN/GIT/schema.sql
+fi
