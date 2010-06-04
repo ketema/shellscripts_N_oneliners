@@ -1,0 +1,13 @@
+#This is a cronjob that I run locally
+#to automate committing to various projects
+#obviously replace/edit to suit your needs
+
+
+#!/bin/bash
+pushd /PATH/TO/A/GIT/REPO
+/PATH/TO//git commit -a -m "15 min auto commit"
+
+#repeat above pattern.  A nice thing would be to 
+#create a script that takes input and appends
+#to this file and perhaps even deletes an entry
+#when/if a project is removed
