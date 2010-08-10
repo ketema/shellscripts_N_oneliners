@@ -1,0 +1,14 @@
+#!/bin/bash
+
+OS=`uname | tr -d "\n"`
+case ${OS} in
+     'Linux' )
+         echo "Linux"
+     ;;
+     'Darwin' )
+         echo "Mac"
+     ;;
+     *)
+         echo "Other"
+     ;;
+esac
