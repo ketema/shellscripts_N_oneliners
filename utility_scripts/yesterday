@@ -1,0 +1,17 @@
+#!/bin/bash
+
+YESTERDAY=$((`date +%d` -1))
+MONTH=`date +%m`
+let MONTH="10#$MONTH"
+YEAR=`date +%Y`
+if [ $YESTERDAY -eq "0" ]; then
+MONTH=$(($MONTH-1))
+  if [ $MONTH -eq "0" ]; then
+    MONTH=12
+    YEAR=$(($YEAR-1))
+  fi
+set `cal $MONTH $YEAR`
+shift $(($# - 1))
+YESTERDAY=$1
+fi
+printf "%4d-%02d-%02d\n" $YEAR $MONTH $YESTERDAY
